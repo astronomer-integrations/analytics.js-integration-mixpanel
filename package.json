@@ -1,5 +1,5 @@
 {
-  "name": "@segment/analytics.js-integration-mixpanel",
+  "name": "@astronomerio/analytics.js-integration-mixpanel",
   "description": "The Mixpanel analytics.js integration.",
   "version": "2.2.0",
   "keywords": [
