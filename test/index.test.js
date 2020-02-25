@@ -50,7 +50,8 @@ describe('Mixpanel', function() {
       .option('trackNamedPages', false)
       .option('consolidatedPageCalls', true)
       .option('setAllTraitsByDefault', true)
-      .option('trackCategorizedPages', false));
+      .option('trackCategorizedPages', false)
+      .option('sourceName', ''));
   });
 
   describe('before loading', function() {
@@ -448,7 +449,7 @@ describe('Mixpanel', function() {
         mixpanel.options.people = true;
         analytics.track('event');
         var date = window.mixpanel.people.set.args[0][1];
-        analytics.assert(date.getTime() === new Date().getTime());
+        analytics.assert(new Date().getTime() - date.getTime() < 1000);
         analytics.called(window.mixpanel.people.increment, 'event');
         analytics.called(window.mixpanel.people.set, 'Last event', date);
       });
@@ -488,9 +489,19 @@ describe('Mixpanel', function() {
         mixpanel.options.propIncrements = ['videos_watched'];
         mixpanel.options.people = true;
         analytics.track('event', {
-          videos_watched: 3 
+          videos_watched: 3
         });
         analytics.called(window.mixpanel.people.increment, 'videos_watched', 3);
+      });
+
+      it('should send sourceName if specified', function() {
+        mixpanel.options.sourceName = 'ios_prod';
+        analytics.track('event', {
+          segment_source_name: 'ios_prod'
+        });
+        analytics.called(window.mixpanel.track, 'event', {
+          segment_source_name: 'ios_prod'
+        });
       });
     });
 
