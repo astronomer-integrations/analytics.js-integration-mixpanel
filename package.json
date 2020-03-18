@@ -1,7 +1,7 @@
 {
   "name": "@astronomerio/analytics.js-integration-mixpanel",
   "description": "The Mixpanel analytics.js integration.",
-  "version": "3.0.0",
+  "version": "3.2.0",
   "keywords": [
     "analytics.js",
     "analytics.js-integration",
@@ -34,7 +34,7 @@
     "obj-case": "^0.2.0"
   },
   "devDependencies": {
-    "@segment/analytics.js-core": "^3.0.0",
+    "@segment/analytics.js-core": "github:segmentio/analytics.js-core#v3.10.1",
     "@segment/analytics.js-integration-tester": "^3.1.0",
     "@segment/clear-env": "^2.0.0",
     "@segment/eslint-config": "^3.1.1",
